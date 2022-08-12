@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="edu.hitsz.application.StartMenu">
+  <grid id="27dc6" binding="startPanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="7acb5" binding="musicPanel1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="a2d4e" class="javax.swing.JLabel" binding="musicLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="音效"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="1ad79" binding="musicPanel2" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="1a574" class="javax.swing.JComboBox" binding="musicBox">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <model>
+                <item value="开"/>
+                <item value="关"/>
+              </model>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="deb84" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="7ef40" class="javax.swing.JButton" binding="hardButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="60"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="困难模式"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="e6b6f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="40e1" class="javax.swing.JButton" binding="mediumButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="60"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="普通模式"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="f4386" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="820aa" class="javax.swing.JButton" binding="easyButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="60"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="简单模式"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

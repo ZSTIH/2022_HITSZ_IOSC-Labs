@@ -1,0 +1,146 @@
+@startuml
+'https://plantuml.com/class-diagram
+'类继承关系 uml类图
+
+abstract class AbstractFlyingObject
+{
+    # locationX:int
+    # locationY:int
+    # speedX:int
+    # speedY:int
+    # image:BufferedImage
+    # width:int
+    # height:int
+    # isValid:boolean
+
+    + AbstractFlyingObject(int locationX, int locationY, int speedX, int speedY)
+    + forward():void
+    + crash(AbstractFlyingObject flyingObject):boolean
+    + setLocation(double locationX, double locationY):void
+    + getLocationX():int
+    + getLocationY():int
+    + getSpeedY():int
+    + getImage():BufferedImage
+    + getWidth():int
+    + getHeight():int
+    + notValid():boolean
+    + vanish():void
+}
+abstract class AbstractAircraft
+{
+	# maxHp:int
+    # hp:int
+    # shootNum:int
+    # power:int
+    # direction:int
+    # isHero:boolean
+    - shootStrategy:ShootStrategy
+    + AbstractAircraft(int locationX, int locationY, int speedX, int speedY, int hp,int shootNum,int power,int direction,boolean isHero)
+    + decreaseHp(int decrease):void
+    + getHp():int
+    + setShootStrategy(ShootStrategy shootStrategy):void
+    + shoot():List<BaseBullet>
+ }
+
+class BaseBullet
+{
+    - power:int
+    + BaseBullet(int locationX, int locationY, int speedX, int speedY, int power)
+    + forward():void
+	+ getPower():int
+}
+
+abstract class AbstractProp{
+    + AbstractProp(int locationX, int locationY, int speedX, int speedY)
+    + {abstract} activate(HeroAircraft heroAircraft, List<AbstractEnemyAircraft> enemyAircrafts, List<BaseBullet> enemyBullets):void
+}
+
+abstract class AbstractEnemyAircraft{
+    - generatePropProbability:double
+    - rateBetweenBombAndBlood:double
+    - rateBetweenBulletAndBlood:double
+    # scoreAward:int
+    + AbstractEnemyAircraft(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + forward():void
+    + getScoreAward():int
+    + generateProp(List<AbstractProp> props):void
+}
+
+AbstractFlyingObject <|-- AbstractAircraft
+AbstractFlyingObject <|-- BaseBullet
+AbstractFlyingObject <|-- AbstractProp
+
+AbstractAircraft <|-- HeroAircraft
+AbstractEnemyAircraft <|-- BossEnemy
+AbstractEnemyAircraft <|-- MobEnemy
+AbstractEnemyAircraft <|-- EliteEnemy
+
+AbstractAircraft <|-- AbstractEnemyAircraft
+
+BaseBullet <|-- HeroBullet
+BaseBullet <|-- EnemyBullet
+
+AbstractProp <|-- BloodProp
+AbstractProp <|-- BombProp
+AbstractProp <|-- BulletProp
+
+class HeroAircraft {
+    - {static} instance:HeroAircraft
+    - HeroAircraft(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power, int direction, boolean isHero)
+    + {static} getHeroAircraftInstance():HeroAircraft
+    + forward():void
+    + changeShootNum(int shootNum):void
+    + getShootNum():int
+}
+
+class MobEnemy {
+    + MobEnemy(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + update(boolean flag):void
+}
+
+class EliteEnemy {
+    + EliteEnemy(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + update(boolean flag):void
+}
+
+class BossEnemy {
+    + BossEnemy(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + update(boolean flag):void
+}
+
+class HeroBullet {
+    + HeroBullet(int locationX, int locationY, int speedX, int speedY, int power)
+}
+
+class EnemyBullet {
+    + EnemyBullet(int locationX, int locationY, int speedX, int speedY, int power)
+    + update(boolean flag):void
+}
+
+class BloodProp {
+    - recoveryAmount:int
+    + BloodProp(int locationX, int locationY, int speedX, int speedY)
+    + getRecoveryAmount():int
+    + activate(HeroAircraft heroAircraft, List<AbstractEnemyAircraft> enemyAircrafts, List<BaseBullet> enemyBullets):void
+}
+
+class BombProp {
+    - subscribers:List<Observer>
+    - scoresAward:int
+    - propsGenerated:List<AbstractProp>
+    + BombProp(int locationX, int locationY, int speedX, int speedY)
+    + addSubscriber(Observer observer):void
+    + removeAllSubscriber():void
+    + activate(HeroAircraft heroAircraft, List<AbstractEnemyAircraft> enemyAircrafts, List<BaseBullet> enemyBullets):void
+    + notifyAllSubscribers():void
+    + getScoresAward():int
+    + getPropsGenerated():List<AbstractProp>
+}
+
+class BulletProp {
+    + BulletProp(int locationX, int locationY, int speedX, int speedY)
+    + activate(HeroAircraft heroAircraft, List<AbstractEnemyAircraft> enemyAircrafts, List<BaseBullet> enemyBullets):void
+
+}
+
+@enduml

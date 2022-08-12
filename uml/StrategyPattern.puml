@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+'策略模式 uml类图
+
+interface ShootStrategy
+{
+    + doShoot(int shootNum, int aircraftLocationX, int aircraftLocationY,int aircraftSpeedY, int direction, int power,boolean isHero):List<BaseBullet>
+}
+
+class ScatterShootStrategy
+{
+    + doShoot(int shootNum, int aircraftLocationX, int aircraftLocationY,int aircraftSpeedY, int direction, int power,boolean isHero):List<BaseBullet>
+}
+
+class DirectShootStrategy
+{
+    + doShoot(int shootNum, int aircraftLocationX, int aircraftLocationY,int aircraftSpeedY, int direction, int power,boolean isHero):List<BaseBullet>
+}
+
+
+abstract class AbstractAircraft
+{
+	# maxHp:int
+    # hp:int
+    # shootNum:int
+    # power:int
+    # direction:int
+    # isHero:boolean
+    - shootStrategy:ShootStrategy
+    + AbstractAircraft(int locationX, int locationY, int speedX, int speedY, int hp,int shootNum,int power,int direction,boolean isHero)
+    + decreaseHp(int decrease):void
+    + getHp():int
+    + setShootStrategy(ShootStrategy shootStrategy):void
+    + shoot():List<BaseBullet>
+ }
+
+
+class Game
+{
+}
+
+ShootStrategy <|.. DirectShootStrategy
+ShootStrategy <|.. ScatterShootStrategy
+ShootStrategy <--o AbstractAircraft
+AbstractAircraft <... Game
+@enduml

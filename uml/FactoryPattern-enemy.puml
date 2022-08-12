@@ -1,0 +1,82 @@
+@startuml
+'https://plantuml.com/class-diagram
+'工厂模式创建敌机 uml类图
+
+
+AbstractEnemyAircraft <|-- BossEnemy
+AbstractEnemyAircraft <|-- EliteEnemy
+AbstractEnemyAircraft <|-- MobEnemy
+
+class Game
+{
+}
+
+abstract class AbstractEnemyAircraft{
+    - generatePropProbability:double
+    - rateBetweenBombAndBlood:double
+    - rateBetweenBulletAndBlood:double
+    # scoreAward:int
+    + AbstractEnemyAircraft(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + forward():void
+    + getScoreAward():int
+    + generateProp(List<AbstractProp> props):void
+}
+
+class BossEnemy {
+    + BossEnemy(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + update(boolean flag):void
+}
+
+
+class EliteEnemy {
+    + EliteEnemy(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + update(boolean flag):void
+}
+
+class MobEnemy {
+    + MobEnemy(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + update(boolean flag):void
+}
+
+interface EnemyAircraftFactory
+{
+    + createEnemyAircraft():AbstractEnemyAircraft
+}
+
+class BossEnemyFactory
+{
+    + {static} initialHp:int
+    + {static} initialShootNum:int
+    + {static} initialPower:int
+    + createEnemyAircraft():AbstractEnemyAircraft
+}
+
+class EliteEnemyFactory
+{
+    + {static} initialHp:int
+    + {static} initialShootNum:int
+    + {static} initialPower:int
+    + createEnemyAircraft():AbstractEnemyAircraft
+}
+
+
+class MobEnemyFactory
+{
+    + {static} initialHp:int
+    + createEnemyAircraft():AbstractEnemyAircraft
+}
+
+EnemyAircraftFactory <|.. MobEnemyFactory
+EnemyAircraftFactory <|.. EliteEnemyFactory
+EnemyAircraftFactory <|.. BossEnemyFactory
+
+BossEnemy <.. BossEnemyFactory
+EliteEnemy <.. EliteEnemyFactory
+MobEnemy <.. MobEnemyFactory
+
+AbstractEnemyAircraft <.. Game
+EnemyAircraftFactory <.. Game
+
+AbstractEnemyAircraft <.. EnemyAircraftFactory
+
+@enduml

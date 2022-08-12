@@ -1,0 +1,76 @@
+@startuml
+'https://plantuml.com/class-diagram
+'类继承关系 简化版uml类图
+'为了便于在实验报告中清晰呈现继承关系，该uml类图省略掉了类中的属性和方法，仅仅体现了类间的继承关系。
+'要获知完整属性与方法，可查看Inheritence.puml文件。
+
+
+
+
+abstract class AbstractFlyingObject
+{
+}
+abstract class AbstractAircraft
+{
+}
+
+class BaseBullet
+{
+}
+
+abstract class AbstractProp{
+}
+
+abstract class AbstractEnemyAircraft{
+}
+
+AbstractFlyingObject <|-- AbstractAircraft
+AbstractFlyingObject <|-- BaseBullet
+AbstractFlyingObject <|-- AbstractProp
+
+AbstractAircraft <|-- HeroAircraft
+AbstractEnemyAircraft <|-- BossEnemy
+AbstractEnemyAircraft <|-- MobEnemy
+AbstractEnemyAircraft <|-- EliteEnemy
+
+AbstractAircraft <|-- AbstractEnemyAircraft
+
+BaseBullet <|-- HeroBullet
+BaseBullet <|-- EnemyBullet
+
+AbstractProp <|-- BloodProp
+AbstractProp <|-- BombProp
+AbstractProp <|-- BulletProp
+
+class HeroAircraft {
+}
+
+class MobEnemy {
+}
+
+class EliteEnemy {
+}
+
+class BossEnemy {
+}
+
+class HeroBullet {
+}
+
+class EnemyBullet {
+}
+
+class BloodProp {
+}
+
+class BombProp {
+}
+
+class BulletProp {
+}
+
+
+
+
+
+@enduml

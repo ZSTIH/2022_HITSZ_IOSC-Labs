@@ -1,0 +1,77 @@
+@startuml
+'https://plantuml.com/class-diagram
+'工厂模式创建道具 uml类图
+
+
+AbstractProp <|-- BloodProp
+AbstractProp <|-- BulletProp
+AbstractProp <|-- BombProp
+
+
+abstract class AbstractProp{
+    + AbstractProp(int locationX, int locationY, int speedX, int speedY)
+    + {abstract} activate(HeroAircraft heroAircraft, List<AbstractEnemyAircraft> enemyAircrafts, List<BaseBullet> enemyBullets):void
+}
+
+
+class BloodProp {
+    - recoveryAmount:int
+    + BloodProp(int locationX, int locationY, int speedX, int speedY)
+    + getRecoveryAmount():int
+    + activate(HeroAircraft heroAircraft, List<AbstractEnemyAircraft> enemyAircrafts, List<BaseBullet> enemyBullets):void
+}
+
+class BombProp {
+    - subscribers:List<Observer>
+    - scoresAward:int
+    - propsGenerated:List<AbstractProp>
+    + BombProp(int locationX, int locationY, int speedX, int speedY)
+    + addSubscriber(Observer observer):void
+    + removeAllSubscriber():void
+    + activate(HeroAircraft heroAircraft, List<AbstractEnemyAircraft> enemyAircrafts, List<BaseBullet> enemyBullets):void
+    + notifyAllSubscribers():void
+    + getScoresAward():int
+    + getPropsGenerated():List<AbstractProp>
+}
+
+class BulletProp {
+    + BulletProp(int locationX, int locationY, int speedX, int speedY)
+    + activate(HeroAircraft heroAircraft, List<AbstractEnemyAircraft> enemyAircrafts, List<BaseBullet> enemyBullets):void
+
+}
+
+interface PropFactory
+{
+    + createProp(int locationX, int locationY, int speedX, int speedY):AbstractProp
+}
+
+class BulletPropFactory
+{
+    + createProp(int locationX, int locationY, int speedX, int speedY):AbstractProp
+}
+
+class BombPropFactory
+{
+    + createProp(int locationX, int locationY, int speedX, int speedY):AbstractProp
+}
+
+
+class BloodPropFactory
+{
+    + createProp(int locationX, int locationY, int speedX, int speedY):AbstractProp
+}
+
+PropFactory <|.. BulletPropFactory
+PropFactory <|.. BombPropFactory
+PropFactory <|.. BloodPropFactory
+
+BloodProp <.. BloodPropFactory
+BulletProp <.. BulletPropFactory
+BombProp <.. BombPropFactory
+
+PropFactory <.. Game
+AbstractProp <.. Game
+AbstractProp <.. PropFactory
+
+
+@enduml

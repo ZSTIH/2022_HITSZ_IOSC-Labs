@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+'单例模式创建英雄机 uml类图
+
+class HeroAircraft {
+    - {static} instance:HeroAircraft
+    - HeroAircraft(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power, int direction, boolean isHero)
+    + {static} getHeroAircraftInstance():HeroAircraft
+    + forward():void
+    + changeShootNum(int shootNum):void
+    + getShootNum():int
+}
+
+
+HeroAircraft <-- HeroAircraft
+HeroAircraft <-- Game
+
+
+@enduml

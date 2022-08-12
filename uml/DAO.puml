@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+'数据访问对象模式 uml类图
+
+interface GameRecordDao
+{
+    + getAllRecords():List<GameRecord>
+    + addRecord(GameRecord gameRecord):void
+    + deleteRecord(GameRecord gameRecord):void
+}
+
+class GameRecord
+{
+    - userName:String
+    - time:String
+    - score:int
+    - difficulty:String
+    + GameRecord(String userName, String time, int score, String difficulty)
+    + getUserName():String
+    + getTime():String
+    + getScore():int
+    + getDifficulty():String
+
+}
+
+class GameRecordDaoImpl
+{
+    - gameRecords:List<GameRecord>
+    - f:File
+    - fip:FileInputStream
+    - reader:BufferedReader
+    - fop:FileOutputStream
+    - writer:BufferedWriter
+    + GameRecordDaoImpl()
+    + writeToFile():void
+    + getAllRecords():List<GameRecord>
+    + addRecord(GameRecord gameRecord):void
+    + deleteRecord(GameRecord gameRecord):void
+
+}
+
+class Game
+{
+}
+
+GameRecord <--- GameRecordDaoImpl
+GameRecordDao <|.. GameRecordDaoImpl
+GameRecordDao <... Game
+
+
+@enduml

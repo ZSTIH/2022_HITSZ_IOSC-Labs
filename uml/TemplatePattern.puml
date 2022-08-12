@@ -1,0 +1,88 @@
+@startuml
+'https://plantuml.com/class-diagram
+'模板模式 uml类图
+
+abstract class AbstractGame
+{
+    + AbstractGame(boolean isMusic)
+    + action():void
+    # {abstract} needBossOrNot():boolean
+    # {abstract} setEnemyCycleDuration():void
+    # {abstract} setHeroBulletCycleDuration():void
+    # {abstract} setEnemyBulletCycleDuration():void
+    # {abstract} setRateBetweenMobAndElite():void
+    # {abstract} setEnemyMaxNumber():void
+    # {abstract} difficultyIncreaseOrNot():boolean
+    # {abstract} increaseDifficulty():void
+    # {abstract} setDifficultyDuration():void
+    # {abstract} bossHpIncreaseOrNot():boolean
+    - enemyTimeCountAndNewCycleJudge():boolean
+    - heroBulletTimeCountAndNewCycleJudge():boolean
+    - enemyBulletTimeCountAndNewCycleJudge():boolean
+    - setDifficultyTimeCountAndNewCycleJudge():boolean
+    - enemyShootAction():void
+    - heroShootAction():void
+    - bulletsMoveAction():void
+    - enemyAircraftMoveAction():void
+    - propsMoveAction():void
+    - crashCheckAction():void
+    - propsTakeIntoEffect():void
+    - postProcessAction():void
+    + paint(Graphics g):void
+    - paintImageWithPositionRevised(Graphics g, List<? extends AbstractFlyingObject> objects):void
+    - paintScoreAndLife(Graphics g):void
+}
+
+AbstractGame <|-- EasyGame
+AbstractGame <|-- MediumGame
+AbstractGame <|-- HardGame
+
+class EasyGame
+{
+    + EasyGame(boolean isMusic)
+    # needBossOrNot():boolean
+    # setEnemyCycleDuration():void
+    # setHeroBulletCycleDuration():void
+    # setEnemyBulletCycleDuration():void
+    # setRateBetweenMobAndElite():void
+    # setEnemyMaxNumber():void
+    # difficultyIncreaseOrNot():boolean
+    # increaseDifficulty():void
+    # setDifficultyDuration():void
+    # bossHpIncreaseOrNot():boolean
+}
+
+class MediumGame
+{
+    + MediumGame(boolean isMusic)
+    # needBossOrNot():boolean
+    # setEnemyCycleDuration():void
+    # setHeroBulletCycleDuration():void
+    # setEnemyBulletCycleDuration():void
+    # setRateBetweenMobAndElite():void
+    # setEnemyMaxNumber():void
+    # difficultyIncreaseOrNot():boolean
+    # increaseDifficulty():void
+    # setDifficultyDuration():void
+    # bossHpIncreaseOrNot():boolean
+}
+
+class HardGame
+{
+    + HardGame(boolean isMusic)
+    # needBossOrNot():boolean
+    # setEnemyCycleDuration():void
+    # setHeroBulletCycleDuration():void
+    # setEnemyBulletCycleDuration():void
+    # setRateBetweenMobAndElite():void
+    # setEnemyMaxNumber():void
+    # difficultyIncreaseOrNot():boolean
+    # increaseDifficulty():void
+    # setDifficultyDuration():void
+    # bossHpIncreaseOrNot():boolean
+}
+
+
+
+
+@enduml

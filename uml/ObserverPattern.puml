@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+'观察者模式 uml类图
+
+BombProp <.. Game
+Observer <--o BombProp
+Observer <|.. EliteEnemy
+Observer <|.. MobEnemy
+Observer <|.. BossEnemy
+Observer <|.. EnemyBullet
+
+interface Observer{
+    + update(boolean flag):void
+}
+
+class EnemyBullet {
+    + EnemyBullet(int locationX, int locationY, int speedX, int speedY, int power)
+    + update(boolean flag):void
+}
+
+
+class EliteEnemy {
+    + EliteEnemy(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + update(boolean flag):void
+}
+
+class MobEnemy {
+    + MobEnemy(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + update(boolean flag):void
+}
+
+class BossEnemy {
+    + BossEnemy(int locationX, int locationY, int speedX, int speedY, int hp, int shootNum, int power)
+    + update(boolean flag):void
+}
+
+class BombProp {
+    - subscribers:List<Observer>
+    - scoresAward:int
+    - propsGenerated:List<AbstractProp>
+    + BombProp(int locationX, int locationY, int speedX, int speedY)
+    + addSubscriber(Observer observer):void
+    + removeAllSubscriber():void
+    + activate(HeroAircraft heroAircraft, List<AbstractEnemyAircraft> enemyAircrafts, List<BaseBullet> enemyBullets):void
+    + notifyAllSubscribers():void
+    + getScoresAward():int
+    + getPropsGenerated():List<AbstractProp>
+}
+
+
+@enduml
